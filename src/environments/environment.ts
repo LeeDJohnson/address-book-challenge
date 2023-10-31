@@ -1,5 +1,5 @@
 export const environment = {
-    production: false,
+    production: true,
     BASE_URL: 'https://randomuser.me/api/',
     SEED: 'nuvalence'
   };
