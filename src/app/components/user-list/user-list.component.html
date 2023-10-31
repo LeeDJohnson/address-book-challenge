@@ -1,0 +1,35 @@
+<header>
+    <h1>Address Book</h1>
+    <blockquote>
+        <p>"What always seems to stand out about Nuvalence the most though, is the people." - Arjol</p>
+    </blockquote>
+    <p>Browse and learn more about our people!</p>
+</header>
+
+<div *ngIf="loading$ | async" class="center-spinner">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="error$ | async as error" class="error-message">
+    {{ error }}
+</div>
+
+<section *ngIf="users$ | async as users" [@fadeIn]>
+    <ul>
+        <li *ngFor="let user of users">
+            <h2>
+                <a [routerLink]="['/users', user.id]">{{ user.firstName }} {{ user.lastName }}</a>
+            </h2>
+        </li>
+    </ul>
+</section>
+
+<nav>
+    <mat-paginator 
+        [length]="totalUsers$ | async" 
+        [pageSize]="pageSize" 
+        [pageIndex]="pageIndex"
+        [pageSizeOptions]="[10,20,100]"
+        (page)="onPageChange($event)">
+    </mat-paginator>
+</nav>

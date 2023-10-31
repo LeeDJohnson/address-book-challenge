@@ -1,5 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# Should ignore environment.ts file in real world
+
 # Compiled output
 /dist
 /tmp

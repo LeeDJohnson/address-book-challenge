@@ -1,0 +1,24 @@
+<div class="user-details-container" role="main">
+    <button mat-raised-button class="back-button" (click)="goBack()">Back</button>
+    <div class="center-spinner" *ngIf="loading$ | async" aria-live="polite">
+        <mat-spinner diameter="50" aria-label="Loading user details"></mat-spinner>
+    </div>
+
+    <ng-container *ngIf="!(loading$ | async)">
+        <ng-container *ngIf="selectedUser$ | async as user">
+            <div class="user-image-container">
+                <picture>
+                    <source media="(max-width: 599px)" [srcset]="user.imgURLThumbnail">
+                    <source media="(min-width: 600px) and (max-width: 899px)" [srcset]="user.imgURLMedium">
+                    <source media="(min-width: 900px)" [srcset]="user.imgURLLarge">
+                    <img [src]="user.imgURLMedium" alt="{{ user.firstName }} {{ user.lastName }}" loading="lazy">
+                </picture>
+                
+            </div>
+            <div class="user-info">
+                <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+                <p><strong>Phone:</strong> {{ user.phone }}</p>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>
