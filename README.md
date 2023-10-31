@@ -1,6 +1,7 @@
 # Address Book Application
 
-A modern web application to manage and view user details with a responsive design.
+A modern web application to manage and view user details with a responsive design:
+http://nuvalenceproject.s3-website.us-east-2.amazonaws.com/
 
 ## 🚀 Deployment / Running Instructions (Mac)
 
