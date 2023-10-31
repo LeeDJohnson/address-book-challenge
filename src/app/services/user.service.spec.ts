@@ -18,7 +18,7 @@ describe('UserService', () => {
   });
 
   afterEach(() => {
-    httpMock.verify(); // Verify that no unmatched requests are outstanding
+    httpMock.verify();
   });
 
   it('should be created', () => {
@@ -48,8 +48,6 @@ describe('UserService', () => {
     });
 
     const request = httpMock.expectOne(req => req.url.includes(`${environment.BASE_URL}?seed=${environment.SEED}&results=10&page=2`));
-    expect(request.request.headers.has('Accept-Encoding')).toBeTruthy();
-    expect(request.request.headers.get('Accept-Encoding')).toBe('gzip, deflate, br');
     request.flush(mockResponse);
   });
 

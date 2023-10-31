@@ -19,8 +19,7 @@ describe('UserEffects', () => {
       getUsers: jest.fn(),
       BASE_URL: "mock_base_url",
       SEED: "mock_seed",
-      http: {} as HttpClient,  // or mock any methods if used elsewhere
-      headers: {} as any,   
+      http: {} as HttpClient,  // or mock any methods if used elsewhere 
     };
 
     TestBed.configureTestingModule({

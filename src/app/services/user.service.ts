@@ -16,10 +16,9 @@ export class UserService {
   private readonly SEED: string = environment.SEED;
 
   constructor(private http: HttpClient) { }
-  private headers = new HttpHeaders().set('Accept-Encoding', 'gzip, deflate, br');
 
   getUsers(offset: number, limit: number): Observable<User[]> {
-    return this.http.get<{ results: any[] }>(`${this.BASE_URL}?seed=${this.SEED}&results=${limit}&page=${offset + 1}`, { headers: this.headers })
+    return this.http.get<{ results: any[] }>(`${this.BASE_URL}?seed=${this.SEED}&results=${limit}&page=${offset + 1}`)
       .pipe(
         map(response =>
           response.results.map(user => ({
@@ -35,6 +34,7 @@ export class UserService {
       );
   }
 
+  // hard codeing a response because random api doesn't offer this functionality
   getTotalUsersCount(): Observable<number> {
     return this.http.get<{ info: { results: number } }>(
       `${this.BASE_URL}?seed=${this.SEED}&results=0`
